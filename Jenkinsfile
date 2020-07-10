@@ -13,21 +13,21 @@ pipeline {
         stage('Build - Windows 32') {
             steps {
                 bat '''
-                    "%UNITY_LOCATION%" %UNITY_OPTIONS% -projectPath "%cd%" -logFile "%ARTIFACT_LOCATION%/log.txt" -o "%ARTIFACT_LOCATION%" -buildTarget Win
+                    "%UNITY_LOCATION%" %UNITY_OPTIONS% -projectPath "%cd%/src" -logFile "%ARTIFACT_LOCATION%/log.txt" -o "%ARTIFACT_LOCATION%" -buildTarget Win
                 '''
             }
         }
         stage('Build - Windows 64') {
             steps {
                 bat '''
-                    "%UNITY_LOCATION%" %UNITY_OPTIONS% -projectPath "%cd%" -logFile "%ARTIFACT_LOCATION%/log.txt" -o "%ARTIFACT_LOCATION%" -buildTarget Win64
+                    "%UNITY_LOCATION%" %UNITY_OPTIONS% -projectPath "%cd%/src" -logFile "%ARTIFACT_LOCATION%/log.txt" -o "%ARTIFACT_LOCATION%" -buildTarget Win64
                 '''
             }
         }
         stage('Build - WebGL') {
             steps {
                 bat '''
-                    "%UNITY_LOCATION%" %UNITY_OPTIONS% -projectPath "%cd%" -logFile "%ARTIFACT_LOCATION%/log.txt" -o "%ARTIFACT_LOCATION%" -buildTarget WebGL
+                    "%UNITY_LOCATION%" %UNITY_OPTIONS% -projectPath "%cd%/src" -logFile "%ARTIFACT_LOCATION%/log.txt" -o "%ARTIFACT_LOCATION%" -buildTarget WebGL
                 '''
             }
         }
