@@ -6,6 +6,11 @@ public class LightMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private Vector3 _direction;
+    public Vector3 Direction
+    {
+        get { return _direction; }
+        set { _direction = value; }
+    }
 
     void Update()
     {
