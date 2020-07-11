@@ -9,6 +9,7 @@ public class LightMovement : MonoBehaviour
     [SerializeField] private float _radius;
     [SerializeField] private Vector2 _direction;
     [SerializeField] private float _speedIncrease = 0.5f;
+    [SerializeField] private IntVariable _score;
 
     public Vector3 Direction
     {
@@ -25,6 +26,7 @@ public class LightMovement : MonoBehaviour
             this.transform.position = hit.point + (-_direction * _radius);
             _direction = Vector2.Reflect(_direction, hit.normal).normalized;
             _speed += _speedIncrease;
+            _score.Value += 1;
         }
         else
         {
