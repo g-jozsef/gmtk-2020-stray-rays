@@ -314,6 +314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 4
   _direction: {x: 1, y: 0, z: 0}
+  _speedIncrease: 1.1
 --- !u!50 &7591211269314034815
 Rigidbody2D:
   serializedVersion: 4
@@ -333,5 +334,5 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
