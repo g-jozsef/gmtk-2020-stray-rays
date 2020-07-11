@@ -13,28 +13,28 @@ pipeline {
         stage('Build - Windows 32') {
             steps {
                 bat '''
-                    "%UNITY_LOCATION%" %UNITY_OPTIONS% -projectPath "%cd%/src/gmtk-jam-2020" -logFile "%ARTIFACT_LOCATION%/log.txt" -o "%ARTIFACT_LOCATION%" -buildTarget Win
+                    "%UNITY_LOCATION%" %UNITY_OPTIONS% -projectPath "%cd%/src/gmtk-jam-2020" -logFile "%ARTIFACT_LOCATION%/log_win.txt" -o "%ARTIFACT_LOCATION%" -buildTarget Win
                 '''
             }
         }
         stage('Build - Windows 64') {
             steps {
                 bat '''
-                    "%UNITY_LOCATION%" %UNITY_OPTIONS% -projectPath "%cd%/src/gmtk-jam-2020" -logFile "%ARTIFACT_LOCATION%/log.txt" -o "%ARTIFACT_LOCATION%" -buildTarget Win64
+                    "%UNITY_LOCATION%" %UNITY_OPTIONS% -projectPath "%cd%/src/gmtk-jam-2020" -logFile "%ARTIFACT_LOCATION%/log_win64.txt" -o "%ARTIFACT_LOCATION%" -buildTarget Win64
                 '''
             }
         }
         stage('Build - WebGL') {
             steps {
                 bat '''
-                    "%UNITY_LOCATION%" %UNITY_OPTIONS% -projectPath "%cd%/src/gmtk-jam-2020" -logFile "%ARTIFACT_LOCATION%/log.txt" -o "%ARTIFACT_LOCATION%" -buildTarget WebGL
+                    "%UNITY_LOCATION%" %UNITY_OPTIONS% -projectPath "%cd%/src/gmtk-jam-2020" -logFile "%ARTIFACT_LOCATION%/log_webgl.txt" -o "%ARTIFACT_LOCATION%" -buildTarget WebGL
                 '''
             }
         }
         stage('Deploying') {
             steps {
                 bat '''
-                    pscp -P 45796 -pw %FTP_CRED_PSW% -r %ARTIFACT_LOCATION%/webgl %FTP_CRED_USR%@%FTP_ADDR%:%WEBGL_DEPLOY_DIR%
+                    pscp -P 45796 -pw %FTP_CRED_PSW% -r %ARTIFACT_LOCATION%/webgl/ %FTP_CRED_USR%@%FTP_ADDR%:%WEBGL_DEPLOY_DIR%
                 '''
             }
         }

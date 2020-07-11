@@ -35,7 +35,7 @@ public class BuildScript : MonoBehaviour
 
     private static void Build(in BuildArgs args)
     {
-        Debug.Log($"Building ${args.Target} ... ");
+        Debug.Log($"Building {args.Target} ... ");
 
         var ecode = 0;
         try
