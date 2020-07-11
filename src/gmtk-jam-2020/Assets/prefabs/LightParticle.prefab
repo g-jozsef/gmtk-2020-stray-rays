@@ -272,6 +272,10 @@ MonoBehaviour:
   _collisionMask:
     serializedVersion: 2
     m_Bits: 512
+  _edgeMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  _trail: {fileID: 7591211268131932014}
 --- !u!50 &7591211269314034815
 Rigidbody2D:
   serializedVersion: 4
