@@ -6,6 +6,8 @@ public class LightMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private Vector3 _direction;
+    [SerializeField] private float _speedIncrease = 1.1f;
+
     public Vector3 Direction
     {
         get { return _direction; }
@@ -22,5 +24,6 @@ public class LightMovement : MonoBehaviour
         Debug.Log("AAAAAAAAAAA");
         var tr = collision.transform.parent.transform;
         _direction = Vector3.Reflect(_direction, tr.up).normalized;
+        _speed *= _speedIncrease;
     }
 }
