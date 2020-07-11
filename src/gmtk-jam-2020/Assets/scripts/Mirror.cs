@@ -13,10 +13,7 @@ public class Mirror : MonoBehaviour, IRaycastCollision
         _lives -= 1;
         if (_lives == 0)
         {
-            if (this.transform.parent.gameObject)
-            {
-                Destroy(this.transform.parent.gameObject);
-            }
+            Destroy(this.gameObject);
         }
     }
 
