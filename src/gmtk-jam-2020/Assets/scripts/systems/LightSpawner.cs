@@ -40,7 +40,7 @@ public class LightSpawner : MonoBehaviour
         {
             light.Direction *= -1;
         }
-        light.ResetTrail();
+        light.ResetStats();
 
         _timer.RecalibrateTimer(Random.Range(_spawnRandom.x, _spawnRandom.y));
         _timer.Start();
