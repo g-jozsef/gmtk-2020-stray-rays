@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 348061025}
   - component: {fileID: 348061026}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 1282156806}
   - component: {fileID: 1282156807}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -568,6 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b887b6346cb50d44db958177b5428b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lightParticle: {fileID: 0}
 --- !u!4 &2020615418
 Transform:
   m_ObjectHideFlags: 0
