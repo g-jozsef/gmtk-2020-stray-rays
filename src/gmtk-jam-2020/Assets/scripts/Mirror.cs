@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -7,6 +8,16 @@ public class Mirror : MonoBehaviour, IRaycastCollision
     [SerializeField] private EdgeCollider2D _collider;
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private int _lives = 5;
+    [SerializeField] private Color _flashColor;
+    [SerializeField] private float _flashTime = 0.1f;
+
+    private Material mat;
+    private Color originalColor;
+
+    private void Awake()
+    {
+        mat = _renderer.material;
+    }
 
     void IRaycastCollision.OnCollision(LightMovement lightMovement)
     {
@@ -15,6 +26,11 @@ public class Mirror : MonoBehaviour, IRaycastCollision
         {
             Destroy(this.gameObject);
         }
+        originalColor = mat.GetColor("_Tint");
+        mat.DOColor(_flashColor, "_Tint", _flashTime).OnComplete(() =>
+        {
+            mat.DOColor(originalColor, "_Tint", _flashTime);
+        });
     }
 
     public void SetSize(float x)
@@ -24,6 +40,5 @@ public class Mirror : MonoBehaviour, IRaycastCollision
             new Vector2(-x / 2, 0),
             new Vector2(+x / 2, 0)
         };
-        Debug.Log("Setting size: " + x);
     }
 }
