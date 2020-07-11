@@ -10,6 +10,7 @@ public class LightMovement : MonoBehaviour
     [SerializeField] private Vector2 _direction;
     [SerializeField] private float _speedIncrease = 0.5f;
     [SerializeField] private IntVariable _score;
+    [SerializeField] private LayerMask _collisionMask;
 
     public Vector3 Direction
     {
@@ -20,7 +21,7 @@ public class LightMovement : MonoBehaviour
     void Update()
     {
 
-        var hit = Physics2D.Raycast(this.transform.position, _direction, _speed * Time.deltaTime);
+        var hit = Physics2D.Raycast(this.transform.position, _direction, _speed * Time.deltaTime, _collisionMask);
         if (hit.collider != null)
         {
             this.transform.position = hit.point + (-_direction * _radius);
