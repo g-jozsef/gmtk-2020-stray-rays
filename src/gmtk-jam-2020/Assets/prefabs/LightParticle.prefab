@@ -266,8 +266,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 4
   _radius: 0.2
-  _direction: {x: 1, y: 0, z: 0}
-  _speedIncrease: 1.1
+  _direction: {x: 1, y: 0}
+  _speedIncrease: 0.5
 --- !u!50 &7591211269314034815
 Rigidbody2D:
   serializedVersion: 4
