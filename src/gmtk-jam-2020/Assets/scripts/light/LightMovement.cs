@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngineInternal;
 
 public class LightMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
-    [SerializeField] private Vector3 _direction;
+    [SerializeField] private float _radius;
+    [SerializeField] private Vector2 _direction;
     [SerializeField] private float _speedIncrease = 1.1f;
 
     public Vector3 Direction
@@ -16,14 +18,21 @@ public class LightMovement : MonoBehaviour
 
     void Update()
     {
-        this.transform.position += _direction * _speed * Time.deltaTime;
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("AAAAAAAAAAA");
-        var tr = collision.transform.parent.transform;
-        _direction = Vector3.Reflect(_direction, tr.up).normalized;
-        _speed *= _speedIncrease;
+        var hit = Physics2D.Raycast(this.transform.position, _direction, _speed * Time.deltaTime);
+        if (hit.collider != null && hit.distance < _radius)
+        {
+            _direction = Vector2.Reflect(_direction, hit.normal).normalized;
+            _speed *= _speedIncrease;
+        }
+        else if(hit.collider != null)
+        {
+            this.transform.position = hit.point + (-_direction * _radius);
+        }
+        else
+        {
+            var delta = _direction * _speed * Time.deltaTime;
+            this.transform.position += new Vector3(delta.x, delta.y, 0);
+        }
     }
 }
