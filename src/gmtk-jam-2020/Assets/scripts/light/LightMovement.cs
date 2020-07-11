@@ -43,7 +43,7 @@ public class LightMovement : MonoBehaviour
             this.transform.position = hit.point + (-_direction * _radius);
             _direction = Vector2.Reflect(_direction, hit.normal).normalized;
 
-            var coll = hit.collider.GetComponent<IRaycastCollision>();
+            var coll = hit.collider.GetComponentInParent<IRaycastCollision>();
             coll?.OnCollision(this);
 
             _speed += _speedIncrease;
