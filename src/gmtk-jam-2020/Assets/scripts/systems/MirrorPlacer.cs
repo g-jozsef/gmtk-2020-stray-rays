@@ -27,7 +27,7 @@ public class MirrorPlacer : MonoBehaviour
                 obj.transform.position = startPos.Value;
             }
         }
-        if (startPos.HasValue)
+        if (obj)
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (plane.Raycast(ray, out float distance))
@@ -40,6 +40,11 @@ public class MirrorPlacer : MonoBehaviour
                 startPos = null;
                 obj = null;
             }
+        }
+        else
+        {
+            startPos = null;
+            obj = null;
         }
 
     }
