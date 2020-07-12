@@ -1542,7 +1542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lightParticle: {fileID: 7591211269314034814, guid: 4d76717b0462dd44eb834a8fc6c2c9ad,
     type: 3}
-  _spawnRandom: {x: 0.1, y: 0.2}
+  _spawnRandom: {x: 4, y: 7}
   _bounds: {fileID: 2020615419}
 --- !u!4 &2020615418
 Transform:

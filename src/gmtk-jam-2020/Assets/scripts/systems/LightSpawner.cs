@@ -27,7 +27,7 @@ public class LightSpawner : MonoBehaviour
     {
         var existingLight = _pool.FirstOrDefault(x => !x.gameObject.activeSelf);
         var light = (existingLight != null) ? existingLight : GameObject.Instantiate<LightMovement>(_lightParticle);
-        if(existingLight == null)
+        if (existingLight == null)
         {
             _pool.Add(light);
         }
@@ -48,6 +48,13 @@ public class LightSpawner : MonoBehaviour
 
     private void Update()
     {
-        _timer.Update(Time.deltaTime);
+        if (_pool.TrueForAll(x => !x.gameObject.activeSelf))
+        {
+            _timer.Stop();
+        }
+        else
+        {
+            _timer.Update(Time.deltaTime);
+        }
     }
 }
