@@ -133,9 +133,7 @@ MonoBehaviour:
   _flashTime: 0.1
   _audio: {fileID: 1891731446423726788}
   _clips:
-  - {fileID: 8300000, guid: bfa446e0b54d8314ea581d15be3294b4, type: 3}
-  - {fileID: 8300000, guid: b0f740cb667faef4c9fdccfe68571203, type: 3}
-  - {fileID: 8300000, guid: 4a30b2bcf08642e4d9c9c3f3df6b4413, type: 3}
+  - {fileID: 8300000, guid: e466385a04324714c9a01c95a87d8546, type: 3}
 --- !u!82 &1891731446423726788
 AudioSource:
   m_ObjectHideFlags: 0

@@ -36,7 +36,7 @@ public class Mirror : MonoBehaviour, IRaycastCollision
                 mat.DOColor(originalColor, "_Tint", _flashTime);
             });
         }
-        _audio.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+        _audio.pitch = UnityEngine.Random.Range(1.3f, 1.7f);
         _audio.PlayOneShot(_clips[UnityEngine.Random.Range(0, _clips.Length)]);
     }
 

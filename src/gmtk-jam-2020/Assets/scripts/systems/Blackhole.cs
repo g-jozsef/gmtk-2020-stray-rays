@@ -7,6 +7,7 @@ public class Blackhole : MonoBehaviour, IRaycastCollision
     [SerializeField] private float _gravity;
     [SerializeField] private LongVariable _capturedCurrent;
     [SerializeField] private Transform _spin;
+    [SerializeField] private AudioSource _source;
 
     public void OnCollision(LightMovement lightMovement)
     {
@@ -17,6 +18,7 @@ public class Blackhole : MonoBehaviour, IRaycastCollision
         {
             lightMovement.gameObject.SetActive(false);
         });
+        _source.Play();
     }
 
 
