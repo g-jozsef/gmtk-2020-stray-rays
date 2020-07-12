@@ -10,6 +10,7 @@ public class Mirror : MonoBehaviour, IRaycastCollision
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private Color _flashColor;
     [SerializeField] private float _flashTime = 0.1f;
+    [SerializeField] private float _padding = 0.11f;
 
     public bool FinishedPlacing { get; set; }
     private float size;
@@ -46,8 +47,8 @@ public class Mirror : MonoBehaviour, IRaycastCollision
         size = x;
         _renderer.size = new Vector2(x, _renderer.size.y);
         _collider.points = new Vector2[] {
-            new Vector2(-x / 2, 0),
-            new Vector2(+x / 2, 0)
+            new Vector2(-x / 2 - _padding, 0),
+            new Vector2(+x / 2 + _padding, 0)
         };
         return size;
     }
