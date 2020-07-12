@@ -9,6 +9,7 @@ public class Mirror : MonoBehaviour, IRaycastCollision
     [SerializeField] private EdgeCollider2D _collider;
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private Color _flashColor;
+    [SerializeField] private Color _decayColor;
     [SerializeField] private float _flashTime = 0.1f;
     [SerializeField] private AudioSource _audio;
     [SerializeField] private AudioClip[] _clips;
@@ -23,6 +24,16 @@ public class Mirror : MonoBehaviour, IRaycastCollision
         mat = _renderer.material;
         originalColor = mat.GetColor("_Tint");
         size = _renderer.size.x;
+    }
+
+    private void Start()
+    {
+        DOVirtual.DelayedCall(5f, () =>
+        {
+            DOTween.To(() => size, x => SetSize(x), 0, 3f);
+            originalColor = _decayColor;
+            mat.DOColor(_decayColor, "_Tint", _flashTime);
+        });
     }
 
     void IRaycastCollision.OnCollision(LightMovement lightMovement)

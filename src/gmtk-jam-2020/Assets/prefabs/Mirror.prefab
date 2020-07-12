@@ -130,6 +130,7 @@ MonoBehaviour:
   _collider: {fileID: 4384392671453101699}
   _renderer: {fileID: 8528835742484513105}
   _flashColor: {r: 0.9245283, g: 0.89508784, b: 0.16135636, a: 1}
+  _decayColor: {r: 0.6981132, g: 0.19269797, b: 0.18770024, a: 1}
   _flashTime: 0.1
   _audio: {fileID: 1891731446423726788}
   _clips:
