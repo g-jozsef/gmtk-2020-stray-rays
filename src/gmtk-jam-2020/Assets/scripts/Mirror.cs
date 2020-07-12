@@ -10,7 +10,7 @@ public class Mirror : MonoBehaviour, IRaycastCollision
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private Color _flashColor;
     [SerializeField] private float _flashTime = 0.1f;
-    [SerializeField] private float _padding = 0.11f;
+    [SerializeField] private float _padding = 0.8f;
 
     public bool FinishedPlacing { get; set; }
     private float size;

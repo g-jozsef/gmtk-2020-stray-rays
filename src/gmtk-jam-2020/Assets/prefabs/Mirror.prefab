@@ -128,9 +128,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider: {fileID: 4384392671453101699}
   _renderer: {fileID: 8528835742484513105}
-  _lives: 5
   _flashColor: {r: 0.9245283, g: 0.89508784, b: 0.16135636, a: 1}
   _flashTime: 0.1
+  _padding: 0.8
 --- !u!1 &8528835743695705398
 GameObject:
   m_ObjectHideFlags: 0
