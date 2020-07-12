@@ -19,6 +19,7 @@ public class LightMovement : MonoBehaviour
     private void Awake()
     {
         _initialSpeed = _speed;
+        _direction = _direction.normalized;
     }
     public Vector3 Direction
     {
