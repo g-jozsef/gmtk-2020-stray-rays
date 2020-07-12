@@ -14,7 +14,7 @@ public class LightMovement : MonoBehaviour
     [SerializeField] private LayerMask _edgeMask;
     [SerializeField] private TrailRenderer _trail;
 
-    public bool CanMove { get; set; } 
+    public bool CanMove { get; set; }
 
     private float _initialSpeed;
 
@@ -49,9 +49,12 @@ public class LightMovement : MonoBehaviour
         var edgeHit = Physics2D.Raycast(this.transform.position, _direction, _speed * Time.deltaTime, _edgeMask);
         if (edgeHit.collider != null)
         {
-            var coll = edgeHit.collider.GetComponent<IRaycastCollision>();
+            var coll = edgeHit.collider.GetComponents<IRaycastCollision>();
 
-            (coll ?? edgeHit.collider.GetComponentInParent<IRaycastCollision>())?.OnCollision(this);
+            foreach (var col in (coll.Length == 0 ? edgeHit.collider.GetComponentsInParent<IRaycastCollision>() : coll))
+            {
+                col.OnCollision(this);
+            }
             DoMove();
         }
 
@@ -66,8 +69,11 @@ public class LightMovement : MonoBehaviour
             this.transform.position = hit.point + (-_direction * _radius);
             _direction = Vector2.Reflect(_direction, hit.normal).normalized;
 
-            var coll = hit.collider.GetComponentInParent<IRaycastCollision>();
-            coll?.OnCollision(this);
+            var coll = hit.collider.GetComponentsInParent<IRaycastCollision>();
+            foreach (var col in coll)
+            {
+                col.OnCollision(this);
+            }
 
             _speed += _speedIncrease;
             _score.Value += 1;

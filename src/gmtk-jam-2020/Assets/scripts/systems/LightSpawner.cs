@@ -39,7 +39,7 @@ public class LightSpawner : MonoBehaviour
         {
             _spawnCount += i;
         }
-        
+
     }
     public void StartSpawning(long count)
     {
@@ -59,12 +59,20 @@ public class LightSpawner : MonoBehaviour
         light.gameObject.SetActive(true);
         var rx = Random.Range(_bounds.bounds.min.x, _bounds.bounds.max.x);
         var ry = Random.Range(_bounds.bounds.min.y, _bounds.bounds.max.y);
+        if (Mathf.Abs(rx) < 1.2f)
+            rx = Mathf.Sign(rx) * 1.2f;
+        if (Mathf.Abs(ry) < 1.2f)
+            ry = Mathf.Sign(ry) * 1.2f;
+
         light.transform.position = new Vector3(rx, ry, 0);
         light.Direction = Random.insideUnitCircle.normalized;
-        if (Vector3.Dot(light.Direction, light.transform.position) > 0.3)
+        var dot = Vector3.Dot(light.Direction.normalized, -light.transform.position.normalized);
+        // Debug.Log("SPAWN: " + dot);
+        if (dot > 0.8f)
         {
             light.Direction *= -1;
         }
+        //Debug.Log("AFTERSPAWN: " + Vector3.Dot(light.Direction.normalized, -light.transform.position.normalized));
         light.ResetStats();
 
         if (_spawnCount > 0)

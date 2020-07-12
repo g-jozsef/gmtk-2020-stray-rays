@@ -16,7 +16,15 @@ public class MirrorPlacer : MonoBehaviour
     private void Update()
     {
         if (_paused.Value)
+        {
+            startPos = null;
+            if (obj != null)
+            {
+                Destroy(obj.gameObject);
+            }
+            obj = null;
             return;
+        }
 
         if (Input.GetMouseButtonDown(0))
         {

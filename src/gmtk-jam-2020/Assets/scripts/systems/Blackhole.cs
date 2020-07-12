@@ -6,7 +6,7 @@ public class Blackhole : MonoBehaviour, IRaycastCollision
     [SerializeField] private LightSpawner _spawner;
     [SerializeField] private float _gravity;
     [SerializeField] private LongVariable _capturedCurrent;
-
+    [SerializeField] private Transform _spin;
 
     public void OnCollision(LightMovement lightMovement)
     {
