@@ -25,12 +25,15 @@ public class Mirror : MonoBehaviour, IRaycastCollision
 
     void IRaycastCollision.OnCollision(LightMovement lightMovement)
     {
-        DOTween.To(() => size, x => SetSize(x), Mathf.Max(size - 0.35f, 0.34999f), 0.1f);
-
-        mat.DOColor(_flashColor, "_Tint", _flashTime).OnComplete(() =>
+        if (FinishedPlacing)
         {
-            mat.DOColor(originalColor, "_Tint", _flashTime);
-        });
+            DOTween.To(() => size, x => SetSize(x), Mathf.Max(size - 0.35f, 0.34999f), 0.1f);
+
+            mat.DOColor(_flashColor, "_Tint", _flashTime).OnComplete(() =>
+            {
+                mat.DOColor(originalColor, "_Tint", _flashTime);
+            });
+        }
     }
 
     private void Update()
