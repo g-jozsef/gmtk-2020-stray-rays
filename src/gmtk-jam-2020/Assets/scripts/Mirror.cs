@@ -13,6 +13,7 @@ public class Mirror : MonoBehaviour, IRaycastCollision
     [SerializeField] private float _flashTime = 0.1f;
     [SerializeField] private AudioSource _audio;
     [SerializeField] private AudioClip[] _clips;
+    [SerializeField] private float _decay = 5f;
 
     public bool FinishedPlacing { get; set; }
     private float size;
@@ -28,7 +29,7 @@ public class Mirror : MonoBehaviour, IRaycastCollision
 
     private void Start()
     {
-        DOVirtual.DelayedCall(5f, () =>
+        DOVirtual.DelayedCall(_decay, () =>
         {
             DOTween.To(() => size, x => SetSize(x), 0, 3f);
             originalColor = _decayColor;

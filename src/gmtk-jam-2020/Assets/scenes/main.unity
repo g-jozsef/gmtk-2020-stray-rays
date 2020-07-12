@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5194,7 +5194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lightParticle: {fileID: 7591211269314034814, guid: 4d76717b0462dd44eb834a8fc6c2c9ad,
     type: 3}
-  _spawnRandom: {x: 3, y: 5}
+  _spawnRandom: {x: 2, y: 3}
   _bounds: {fileID: 2020615419}
   _spawnCount: 0
 --- !u!4 &2020615418
