@@ -11,7 +11,7 @@ public class LightSpawner : MonoBehaviour
     [SerializeField] private LightMovement _lightParticle;
     [SerializeField] private Vector2 _spawnRandom;
     [SerializeField] private Collider2D _bounds;
-    [SerializeField] private int _spawnCount = 0;
+    [SerializeField] private long _spawnCount = 0;
 
     private Timer _timer;
 
@@ -29,7 +29,19 @@ public class LightSpawner : MonoBehaviour
         }
     }
 
-    public void StartSpawning(int count)
+    public void IncSpawnCount(long i)
+    {
+        if (_spawnCount == 0)
+        {
+            StartSpawning(i);
+        }
+        else
+        {
+            _spawnCount += i;
+        }
+        
+    }
+    public void StartSpawning(long count)
     {
         _spawnCount = count;
         _timer.Start();

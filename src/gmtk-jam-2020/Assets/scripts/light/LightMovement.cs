@@ -14,6 +14,8 @@ public class LightMovement : MonoBehaviour
     [SerializeField] private LayerMask _edgeMask;
     [SerializeField] private TrailRenderer _trail;
 
+    public bool CanMove { get; set; } 
+
     private float _initialSpeed;
 
     public float Speed
@@ -26,6 +28,11 @@ public class LightMovement : MonoBehaviour
     {
         _initialSpeed = _speed;
         _direction = _direction.normalized;
+        CanMove = true;
+    }
+    private void Start()
+    {
+        CanMove = true;
     }
     public Vector3 Direction
     {
@@ -35,12 +42,21 @@ public class LightMovement : MonoBehaviour
 
     void Update()
     {
+        if (!CanMove)
+        {
+            return;
+        }
         var edgeHit = Physics2D.Raycast(this.transform.position, _direction, _speed * Time.deltaTime, _edgeMask);
         if (edgeHit.collider != null)
         {
             var coll = edgeHit.collider.GetComponent<IRaycastCollision>();
-            coll?.OnCollision(this);
+
+            (coll ?? edgeHit.collider.GetComponentInParent<IRaycastCollision>())?.OnCollision(this);
             DoMove();
+        }
+
+        if (!CanMove)
+        {
             return;
         }
 
@@ -70,6 +86,7 @@ public class LightMovement : MonoBehaviour
 
     public void ResetStats()
     {
+        CanMove = true;
         _speed = _initialSpeed;
         _trail.Clear();
     }

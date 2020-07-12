@@ -1,9 +1,24 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
-public class Blackhole : MonoBehaviour
+public class Blackhole : MonoBehaviour, IRaycastCollision
 {
     [SerializeField] private LightSpawner _spawner;
     [SerializeField] private float _gravity;
+    [SerializeField] private LongVariable _capturedCurrent;
+
+
+    public void OnCollision(LightMovement lightMovement)
+    {
+        Debug.Log("Light trapped!");
+        _capturedCurrent.Value += 1;
+        lightMovement.CanMove = false;
+        DOVirtual.DelayedCall(2, () =>
+        {
+            lightMovement.gameObject.SetActive(false);
+        });
+    }
+
 
     private void Update()
     {
