@@ -3,6 +3,7 @@
 public class MirrorPlacer : MonoBehaviour
 {
     [SerializeField] private Mirror _mirror;
+    [SerializeField] private BoolVariable _paused;
 
     private Plane plane;
     private Vector3? startPos;
@@ -14,6 +15,9 @@ public class MirrorPlacer : MonoBehaviour
     }
     private void Update()
     {
+        if (_paused.Value)
+            return;
+
         if (Input.GetMouseButtonDown(0))
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
