@@ -16,6 +16,12 @@ public class LightMovement : MonoBehaviour
 
     private float _initialSpeed;
 
+    public float Speed
+    {
+        get { return _speed; }
+        set { _speed = value; }
+    }
+
     private void Awake()
     {
         _initialSpeed = _speed;

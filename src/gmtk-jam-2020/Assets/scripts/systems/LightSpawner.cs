@@ -14,6 +14,8 @@ public class LightSpawner : MonoBehaviour
 
     private Timer _timer;
 
+    public List<LightMovement> Pool { get { return _pool; } }
+
     private void Start()
     {
         Assert.IsTrue(_spawnRandom.x < _spawnRandom.y, "Spawn random min should be less than spawn random max");
