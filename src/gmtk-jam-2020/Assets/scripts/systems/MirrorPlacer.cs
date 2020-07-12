@@ -38,6 +38,7 @@ public class MirrorPlacer : MonoBehaviour
             }
             if (Input.GetMouseButtonUp(0))
             {
+                obj.FinishedPlacing = true;
                 startPos = null;
                 obj = null;
             }
@@ -50,6 +51,6 @@ public class MirrorPlacer : MonoBehaviour
     }
     private float f(float f)
     {
-        return Mathf.Clamp(Mathf.Pow(f + 1, 2) - 1, 0, 1.7f);
+        return Mathf.Clamp(Mathf.Pow(f + 1, 2) - 1, 0, 2.2f);
     }
 }

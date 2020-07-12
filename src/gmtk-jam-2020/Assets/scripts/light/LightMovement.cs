@@ -9,7 +9,7 @@ public class LightMovement : MonoBehaviour
     [SerializeField] private float _radius;
     [SerializeField] private Vector2 _direction;
     [SerializeField] private float _speedIncrease = 0.5f;
-    [SerializeField] private IntVariable _score;
+    [SerializeField] private LongVariable _score;
     [SerializeField] private LayerMask _collisionMask;
     [SerializeField] private LayerMask _edgeMask;
     [SerializeField] private TrailRenderer _trail;

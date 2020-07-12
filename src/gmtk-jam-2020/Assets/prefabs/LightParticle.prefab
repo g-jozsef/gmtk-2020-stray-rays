@@ -268,7 +268,7 @@ MonoBehaviour:
   _radius: 0.2
   _direction: {x: 1, y: 0}
   _speedIncrease: 0.2
-  _score: {fileID: 11400000, guid: 4abad08be2b57c1498f132a09dd62da0, type: 2}
+  _score: {fileID: 11400000, guid: aa94ce6a09cecc549b99f0fbc0344cde, type: 2}
   _collisionMask:
     serializedVersion: 2
     m_Bits: 512
