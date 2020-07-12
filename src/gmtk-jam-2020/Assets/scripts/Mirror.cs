@@ -10,6 +10,8 @@ public class Mirror : MonoBehaviour, IRaycastCollision
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private Color _flashColor;
     [SerializeField] private float _flashTime = 0.1f;
+    [SerializeField] private AudioSource _audio;
+    [SerializeField] private AudioClip[] _clips;
 
     public bool FinishedPlacing { get; set; }
     private float size;
@@ -34,6 +36,8 @@ public class Mirror : MonoBehaviour, IRaycastCollision
                 mat.DOColor(originalColor, "_Tint", _flashTime);
             });
         }
+        _audio.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+        _audio.PlayOneShot(_clips[UnityEngine.Random.Range(0, _clips.Length)]);
     }
 
     private void Update()
