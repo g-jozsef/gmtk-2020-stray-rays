@@ -33,7 +33,7 @@ public class WaveManager : MonoBehaviour
         _capturedMax.Value = stage;
         _escapedCount.Value = 0;
         _counter.SetText(_stageTxt.text);
-        _counter.SetCounter(2);
+        _counter.SetCounter(1);
         DOTween.To(() => _counter.Cnt, x => _counter.Cnt = x, 0, 3f).OnComplete(() =>
         {
             _spawner.StartSpawning(_capturedMax.Value);
